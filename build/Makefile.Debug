@@ -708,11 +708,13 @@ debug/mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/qtabwidget.h \
 		ui_mainwindow.h \
 		F:/qt/6.7.2/mingw_64/include/QtCore/QVariant \
+		F:/qt/6.7.2/mingw_64/include/QtGui/QAction \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/QApplication \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/qapplication.h \
+		F:/qt/6.7.2/mingw_64/include/QtWidgets/QMenu \
+		F:/qt/6.7.2/mingw_64/include/QtWidgets/qmenu.h \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/QMenuBar \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/qmenubar.h \
-		F:/qt/6.7.2/mingw_64/include/QtWidgets/qmenu.h \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/QStatusBar \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/qstatusbar.h \
 		F:/qt/6.7.2/mingw_64/include/QtWidgets/QWidget

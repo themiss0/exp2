@@ -23,12 +23,36 @@
      <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuhello_world">
+   <widget class="QMenu" name="file">
     <property name="title">
-     <string>hello world</string>
+     <string>文件(&amp;F)</string>
     </property>
    </widget>
-   <addaction name="menuhello_world"/>
+   <widget class="QMenu" name="edit">
+    <property name="title">
+     <string>编辑(&amp;E)</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="type">
+    <property name="title">
+     <string>格式(&amp;O)</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="view">
+    <property name="title">
+     <string>查看(&amp;V)</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="help">
+    <property name="title">
+     <string>帮助(&amp;H)</string>
+    </property>
+   </widget>
+   <addaction name="file"/>
+   <addaction name="edit"/>
+   <addaction name="type"/>
+   <addaction name="view"/>
+   <addaction name="help"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
