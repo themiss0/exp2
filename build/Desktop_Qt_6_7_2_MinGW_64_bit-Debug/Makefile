@@ -381,7 +381,6 @@ Makefile: ../../exp2.pro F:/qt/6.7.2/mingw_64/mkspecs/win32-g++/qmake.conf F:/qt
 		F:/qt/6.7.2/mingw_64/mkspecs/features/qt_config.prf \
 		F:/qt/6.7.2/mingw_64/mkspecs/win32-g++/qmake.conf \
 		F:/qt/6.7.2/mingw_64/mkspecs/features/spec_post.prf \
-		../.qmake.stash \
 		F:/qt/6.7.2/mingw_64/mkspecs/features/exclusive_builds.prf \
 		F:/qt/6.7.2/mingw_64/mkspecs/features/toolchain.prf \
 		F:/qt/6.7.2/mingw_64/mkspecs/features/default_pre.prf \
@@ -411,6 +410,7 @@ Makefile: ../../exp2.pro F:/qt/6.7.2/mingw_64/mkspecs/win32-g++/qmake.conf F:/qt
 		F:/qt/6.7.2/mingw_64/lib/Qt6Gui.prl \
 		F:/qt/6.7.2/mingw_64/lib/Qt6Core.prl \
 		F:/qt/6.7.2/mingw_64/lib/Qt6EntryPoint.prl \
+		.qmake.stash \
 		F:/qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\..\exp2.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 F:/qt/6.7.2/mingw_64/mkspecs/features/spec_pre.prf:
@@ -724,7 +724,6 @@ F:/qt/6.7.2/mingw_64/mkspecs/features/qt_functions.prf:
 F:/qt/6.7.2/mingw_64/mkspecs/features/qt_config.prf:
 F:/qt/6.7.2/mingw_64/mkspecs/win32-g++/qmake.conf:
 F:/qt/6.7.2/mingw_64/mkspecs/features/spec_post.prf:
-../.qmake.stash:
 F:/qt/6.7.2/mingw_64/mkspecs/features/exclusive_builds.prf:
 F:/qt/6.7.2/mingw_64/mkspecs/features/toolchain.prf:
 F:/qt/6.7.2/mingw_64/mkspecs/features/default_pre.prf:
@@ -754,6 +753,7 @@ F:/qt/6.7.2/mingw_64/lib/Qt6Widgets.prl:
 F:/qt/6.7.2/mingw_64/lib/Qt6Gui.prl:
 F:/qt/6.7.2/mingw_64/lib/Qt6Core.prl:
 F:/qt/6.7.2/mingw_64/lib/Qt6EntryPoint.prl:
+.qmake.stash:
 F:/qt/6.7.2/mingw_64/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\exp2.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -765,6 +765,7 @@ all: debug-all release-all  FORCE
 clean: debug-clean release-clean  FORCE
 distclean: debug-distclean release-distclean  FORCE
 	-$(DEL_FILE) Makefile
+	-$(DEL_FILE) .qmake.stash
 
 debug-mocclean:
 	$(MAKE) -f $(MAKEFILE).Debug mocclean

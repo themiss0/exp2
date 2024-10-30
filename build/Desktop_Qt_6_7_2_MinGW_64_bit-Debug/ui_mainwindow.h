@@ -12,10 +12,13 @@
 #include <QtCore/QVariant>
 #include <QtGui/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -42,7 +45,10 @@ public:
     QAction *actionReturnDefaultZoom;
     QAction *actionShowStatusBar;
     QAction *actionAbout;
+    QAction *actionFont;
     QWidget *centralwidget;
+    QHBoxLayout *horizontalLayout;
+    QPlainTextEdit *TextEdit;
     QMenuBar *menubar;
     QMenu *file;
     QMenu *edit;
@@ -51,6 +57,7 @@ public:
     QMenu *menu_Z;
     QMenu *help;
     QStatusBar *statusbar;
+    QToolBar *toolBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -141,8 +148,21 @@ public:
         actionShowStatusBar->setMenuRole(QAction::MenuRole::NoRole);
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName("actionAbout");
+        actionFont = new QAction(MainWindow);
+        actionFont->setObjectName("actionFont");
+        actionFont->setMenuRole(QAction::MenuRole::NoRole);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
+        horizontalLayout = new QHBoxLayout(centralwidget);
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        TextEdit = new QPlainTextEdit(centralwidget);
+        TextEdit->setObjectName("TextEdit");
+        TextEdit->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOn);
+        TextEdit->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOn);
+
+        horizontalLayout->addWidget(TextEdit);
+
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -163,6 +183,9 @@ public:
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");
         MainWindow->setStatusBar(statusbar);
+        toolBar = new QToolBar(MainWindow);
+        toolBar->setObjectName("toolBar");
+        MainWindow->addToolBar(Qt::ToolBarArea::TopToolBarArea, toolBar);
 
         menubar->addAction(file->menuAction());
         menubar->addAction(edit->menuAction());
@@ -185,12 +208,27 @@ public:
         edit->addSeparator();
         edit->addAction(actionSelectAll);
         type->addAction(actionAutoChangeRow);
+        type->addAction(actionFont);
         view->addAction(menu_Z->menuAction());
         view->addAction(actionShowStatusBar);
         menu_Z->addAction(actionZoomIn);
         menu_Z->addAction(actionZoomOut);
         menu_Z->addAction(actionReturnDefaultZoom);
         help->addAction(actionAbout);
+        toolBar->addAction(actionNew);
+        toolBar->addAction(actionOpen);
+        toolBar->addAction(actionSave);
+        toolBar->addAction(actionSaveAs);
+        toolBar->addSeparator();
+        toolBar->addAction(actionCopy);
+        toolBar->addAction(actionCut);
+        toolBar->addAction(actionPaste);
+        toolBar->addAction(actionUndo);
+        toolBar->addAction(actionRedo);
+        toolBar->addSeparator();
+        toolBar->addAction(actionFind);
+        toolBar->addAction(actionReplace);
+        toolBar->addSeparator();
 
         retranslateUi(MainWindow);
 
@@ -261,12 +299,14 @@ public:
 #endif // QT_CONFIG(shortcut)
         actionShowStatusBar->setText(QCoreApplication::translate("MainWindow", "\347\212\266\346\200\201\346\240\217(&S)", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
+        actionFont->setText(QCoreApplication::translate("MainWindow", "\345\255\227\344\275\223", nullptr));
         file->setTitle(QCoreApplication::translate("MainWindow", "\346\226\207\344\273\266(&F)", nullptr));
         edit->setTitle(QCoreApplication::translate("MainWindow", "\347\274\226\350\276\221(&E)", nullptr));
         type->setTitle(QCoreApplication::translate("MainWindow", "\346\240\274\345\274\217(&O)", nullptr));
         view->setTitle(QCoreApplication::translate("MainWindow", "\346\237\245\347\234\213(&V)", nullptr));
         menu_Z->setTitle(QCoreApplication::translate("MainWindow", "\347\274\251\346\224\276(&Z)", nullptr));
         help->setTitle(QCoreApplication::translate("MainWindow", "\345\270\256\345\212\251(&H)", nullptr));
+        toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };
