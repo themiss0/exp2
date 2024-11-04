@@ -46,6 +46,8 @@ public:
     QAction *actionShowStatusBar;
     QAction *actionAbout;
     QAction *actionFont;
+    QAction *actionShowToolBar;
+    QAction *actionShowRowNum;
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout;
     QPlainTextEdit *TextEdit;
@@ -151,6 +153,12 @@ public:
         actionFont = new QAction(MainWindow);
         actionFont->setObjectName("actionFont");
         actionFont->setMenuRole(QAction::MenuRole::NoRole);
+        actionShowToolBar = new QAction(MainWindow);
+        actionShowToolBar->setObjectName("actionShowToolBar");
+        actionShowToolBar->setMenuRole(QAction::MenuRole::NoRole);
+        actionShowRowNum = new QAction(MainWindow);
+        actionShowRowNum->setObjectName("actionShowRowNum");
+        actionShowRowNum->setMenuRole(QAction::MenuRole::NoRole);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         horizontalLayout = new QHBoxLayout(centralwidget);
@@ -209,8 +217,10 @@ public:
         edit->addAction(actionSelectAll);
         type->addAction(actionAutoChangeRow);
         type->addAction(actionFont);
+        type->addAction(actionShowRowNum);
         view->addAction(menu_Z->menuAction());
         view->addAction(actionShowStatusBar);
+        view->addAction(actionShowToolBar);
         menu_Z->addAction(actionZoomIn);
         menu_Z->addAction(actionZoomOut);
         menu_Z->addAction(actionReturnDefaultZoom);
@@ -300,6 +310,8 @@ public:
         actionShowStatusBar->setText(QCoreApplication::translate("MainWindow", "\347\212\266\346\200\201\346\240\217(&S)", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "\345\205\263\344\272\216", nullptr));
         actionFont->setText(QCoreApplication::translate("MainWindow", "\345\255\227\344\275\223", nullptr));
+        actionShowToolBar->setText(QCoreApplication::translate("MainWindow", "\345\267\245\345\205\267\346\240\217", nullptr));
+        actionShowRowNum->setText(QCoreApplication::translate("MainWindow", "\346\230\276\347\244\272\350\241\214\345\217\267", nullptr));
         file->setTitle(QCoreApplication::translate("MainWindow", "\346\226\207\344\273\266(&F)", nullptr));
         edit->setTitle(QCoreApplication::translate("MainWindow", "\347\274\226\350\276\221(&E)", nullptr));
         type->setTitle(QCoreApplication::translate("MainWindow", "\346\240\274\345\274\217(&O)", nullptr));
