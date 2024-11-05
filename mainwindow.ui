@@ -29,6 +29,9 @@
     </property>
     <item>
      <widget class="QPlainTextEdit" name="TextEdit">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <property name="verticalScrollBarPolicy">
        <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
       </property>
@@ -77,8 +80,10 @@
     <property name="title">
      <string>格式(&amp;O)</string>
     </property>
-    <addaction name="actionAutoChangeRow"/>
-    <addaction name="actionFont"/>
+    <addaction name="actionLineWrap"/>
+    <addaction name="actionFont_2"/>
+    <addaction name="actionFontColor"/>
+    <addaction name="actionBgColor"/>
     <addaction name="actionShowRowNum"/>
    </widget>
    <widget class="QMenu" name="view">
@@ -308,7 +313,10 @@
     <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
-  <action name="actionAutoChangeRow">
+  <action name="actionLineWrap">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>自动换行</string>
    </property>
@@ -368,14 +376,6 @@
     <string>关于</string>
    </property>
   </action>
-  <action name="actionFont">
-   <property name="text">
-    <string>字体</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
-   </property>
-  </action>
   <action name="actionShowToolBar">
    <property name="text">
     <string>工具栏</string>
@@ -387,6 +387,27 @@
   <action name="actionShowRowNum">
    <property name="text">
     <string>显示行号</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionFontColor">
+   <property name="text">
+    <string>字体颜色</string>
+   </property>
+  </action>
+  <action name="actionBgColor">
+   <property name="text">
+    <string>背景颜色</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::MenuRole::NoRole</enum>
+   </property>
+  </action>
+  <action name="actionFont_2">
+   <property name="text">
+    <string>字体</string>
    </property>
    <property name="menuRole">
     <enum>QAction::MenuRole::NoRole</enum>

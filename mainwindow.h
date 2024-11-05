@@ -46,6 +46,15 @@ private slots:
 
     void on_TextEdit_undoAvailable(bool b);
 
+    void on_actionFontColor_triggered();
+
+    void on_actionBgColor_triggered();
+
+
+    void on_actionLineWrap_triggered();
+
+    void on_actionFont_2_triggered();
+
 private:
     Ui::MainWindow *ui;
     QLabel statusLabel;

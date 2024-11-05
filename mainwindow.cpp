@@ -6,7 +6,10 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QTextStream>
-#include <qclipboard.h>
+#include <qcolordialog.h>
+#include <iostream>
+#include <QPlainTextEdit>
+#include <QFontDialog>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -29,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->actionUndo->setEnabled(false);
     ui->actionCopy->setEnabled(false);
     ui->actionCut->setEnabled(false);
+    ui->TextEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
 
     ischanged = false;
 }
@@ -192,30 +196,25 @@ void MainWindow::on_actionCut_triggered()
     ui->TextEdit->cut();
 }
 
-
 void MainWindow::on_actionCopy_triggered()
 {
     ui->TextEdit->copy();
 }
-
 
 void MainWindow::on_actionPaste_triggered()
 {
     ui->TextEdit->paste();
 }
 
-
 void MainWindow::on_actionRedo_triggered()
 {
     ui->TextEdit->redo();
 }
 
-
 void MainWindow::on_actionUndo_triggered()
 {
     ui->TextEdit->undo();
 }
-
 
 void MainWindow::on_TextEdit_copyAvailable(bool b)
 {
@@ -223,15 +222,53 @@ void MainWindow::on_TextEdit_copyAvailable(bool b)
     ui->actionCut->setEnabled(b);
 }
 
-
 void MainWindow::on_TextEdit_redoAvailable(bool b)
 {
     ui->actionRedo->setEnabled(b);
 }
 
-
 void MainWindow::on_TextEdit_undoAvailable(bool b)
 {
     ui->actionUndo->setEnabled(b);
+}
+
+void MainWindow::on_actionFontColor_triggered()
+{
+    QColor color = QColorDialog::getColor(Qt::black, this, "选择颜色");
+    ui->TextEdit->setStyleSheet("color:" + color.name());
+}
+
+void MainWindow::on_actionBgColor_triggered()
+{
+
+    QColor color = QColorDialog::getColor(Qt::black, this, "选择颜色");
+    ui->TextEdit->setStyleSheet("background-color:" + color.name());
+}
+
+
+void MainWindow::on_actionLineWrap_triggered()
+{
+    QPlainTextEdit::LineWrapMode mode = ui->TextEdit->lineWrapMode();
+
+    if(mode == QPlainTextEdit::NoWrap){
+        ui->TextEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+
+        ui->actionLineWrap->setChecked(true);
+    }else{
+        ui->TextEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
+
+        ui->actionLineWrap->setChecked(false);
+    }
+
+}
+
+
+void MainWindow::on_actionFont_2_triggered()
+{
+    bool ok = false;
+    QFont font = QFontDialog::getFont(&ok, this);
+    if(ok){
+        ui->TextEdit->setFont(font);
+    }
 }
 
