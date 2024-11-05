@@ -55,6 +55,8 @@ private slots:
 
     void on_actionFont_2_triggered();
 
+    void on_actionShowStatusBar_checkableChanged(bool checkable);
+
 private:
     Ui::MainWindow *ui;
     QLabel statusLabel;

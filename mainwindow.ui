@@ -364,6 +364,9 @@
    </property>
   </action>
   <action name="actionShowStatusBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>状态栏(&amp;S)</string>
    </property>
@@ -377,6 +380,9 @@
    </property>
   </action>
   <action name="actionShowToolBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>工具栏</string>
    </property>

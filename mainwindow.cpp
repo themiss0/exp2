@@ -272,3 +272,17 @@ void MainWindow::on_actionFont_2_triggered()
     }
 }
 
+
+void MainWindow::on_actionShowStatusBar_checkableChanged(bool checkable)
+{
+    std::cout <<checkable << std::endl;
+    if(checkable){
+
+        ui->statusbar->show();
+    }
+    else{
+        ui->statusbar->hide();
+    }
+
+}
+
