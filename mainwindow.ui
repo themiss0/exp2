@@ -81,7 +81,7 @@
      <string>格式(&amp;O)</string>
     </property>
     <addaction name="actionLineWrap"/>
-    <addaction name="actionFont_2"/>
+    <addaction name="actionFont"/>
     <addaction name="actionFontColor"/>
     <addaction name="actionBgColor"/>
     <addaction name="actionShowRowNum"/>
@@ -94,9 +94,6 @@
      <property name="title">
       <string>缩放(&amp;Z)</string>
      </property>
-     <addaction name="actionZoomIn"/>
-     <addaction name="actionZoomOut"/>
-     <addaction name="actionReturnDefaultZoom"/>
     </widget>
     <addaction name="menu_Z"/>
     <addaction name="actionShowStatusBar"/>
@@ -324,45 +321,6 @@
     <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
-  <action name="actionZoomIn">
-   <property name="icon">
-    <iconset theme="QIcon::ThemeIcon::ZoomIn"/>
-   </property>
-   <property name="text">
-    <string>放大(&amp;I)</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+=</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionZoomOut">
-   <property name="icon">
-    <iconset theme="QIcon::ThemeIcon::ZoomOut"/>
-   </property>
-   <property name="text">
-    <string>缩小(&amp;O)</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+-</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
-   </property>
-  </action>
-  <action name="actionReturnDefaultZoom">
-   <property name="text">
-    <string>恢复默认缩放</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+0</string>
-   </property>
-   <property name="menuRole">
-    <enum>QAction::MenuRole::NoRole</enum>
-   </property>
-  </action>
   <action name="actionShowStatusBar">
    <property name="checkable">
     <bool>true</bool>
@@ -391,6 +349,9 @@
    </property>
   </action>
   <action name="actionShowRowNum">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>显示行号</string>
    </property>
@@ -411,7 +372,7 @@
     <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
-  <action name="actionFont_2">
+  <action name="actionFont">
    <property name="text">
     <string>字体</string>
    </property>

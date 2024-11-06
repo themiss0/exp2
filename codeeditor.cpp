@@ -101,3 +101,17 @@ void CodeEditor::lineNumberAreaPaintEvent(QPaintEvent *event)
         ++blockNumber;
     }
 }
+
+void CodeEditor::hideLineNumberArea(bool flag)
+{
+    if (flag)
+    {
+        lineNumberArea->hide();
+        setViewportMargins(0, 0, 0, 0);
+    }
+    else
+    {
+        lineNumberArea->show();
+        setViewportMargins(lineNumberAreaWidth(), 0, 0, 0);
+    }
+}

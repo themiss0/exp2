@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     ui->actionShowStatusBar->setChecked(true);
     ui->actionShowToolBar->setChecked(true);
+    ui->actionShowRowNum->setChecked(true);
 
     ischanged = false;
 }
@@ -332,4 +333,22 @@ void MainWindow::closeEvent(QCloseEvent *e)
 void MainWindow::on_TextEdit_cursorPositionChanged()
 {
     statusCursorLabel.setText("Ln: " + QString::number(ui->TextEdit->textCursor().blockNumber()) + "   Col: " + QString::number(ui->TextEdit->textCursor().columnNumber()));
+}
+
+void MainWindow::on_actionShowRowNum_triggered()
+{
+    if (ui->actionShowRowNum->isChecked())
+    {
+        ui->TextEdit->hideLineNumberArea(false);
+    }
+    else
+    {
+        ui->TextEdit->hideLineNumberArea(true);
+    }
+}
+
+void MainWindow::on_actionSelectAll_triggered()
+{
+    ui->TextEdit->textCursor().setPosition(0);
+    ui->TextEdit->textCursor().setPosition(-1, QTextCursor::KeepAnchor);
 }

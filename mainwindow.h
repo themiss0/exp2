@@ -64,6 +64,10 @@ private slots:
 
     void on_TextEdit_cursorPositionChanged();
 
+    void on_actionShowRowNum_triggered();
+
+    void on_actionSelectAll_triggered();
+
 private:
     Ui::MainWindow *ui;
     QLabel statusLabel;

@@ -4,8 +4,6 @@
 #include <QPlainTextEdit>
 #include <QPaintEvent>
 
-
-
 class CodeEditor : public QPlainTextEdit
 {
     Q_OBJECT
@@ -15,6 +13,7 @@ public:
 
     void lineNumberAreaPaintEvent(QPaintEvent *event);
     int lineNumberAreaWidth();
+    void hideLineNumberArea(bool flag);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
