@@ -18,6 +18,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void sumbitStyleSheet();
 
 private slots:
     void on_actionAbout_triggered();
@@ -74,6 +75,8 @@ private:
     QLabel statusCursorLabel;
     QLabel autherLabel;
     QString filepath;
+    QString textEditFontColor;
+    QString textEditBgColor;
     bool ischanged;
 };
 #endif // MAINWINDOW_H

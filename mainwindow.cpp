@@ -238,17 +238,24 @@ void MainWindow::on_TextEdit_undoAvailable(bool b)
     ui->actionUndo->setEnabled(b);
 }
 
+void MainWindow::sumbitStyleSheet()
+{
+    ui->TextEdit->setStyleSheet(textEditFontColor + "; " + textEditBgColor);
+}
+
 void MainWindow::on_actionFontColor_triggered()
 {
     QColor color = QColorDialog::getColor(Qt::black, this, "选择颜色");
-    ui->TextEdit->setStyleSheet("color:" + color.name());
+    textEditFontColor = "color:" + color.name();
+    sumbitStyleSheet();
 }
 
 void MainWindow::on_actionBgColor_triggered()
 {
 
     QColor color = QColorDialog::getColor(Qt::black, this, "选择颜色");
-    ui->TextEdit->setStyleSheet("background-color:" + color.name());
+    textEditBgColor = "background-color:" + color.name();
+    sumbitStyleSheet();
 }
 
 void MainWindow::on_actionLineWrap_triggered()
