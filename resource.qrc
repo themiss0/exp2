@@ -1,6 +1,5 @@
 <RCC>
     <qresource prefix="/pic">
-        <file>resource/pic/note.jpg</file>
+        <file>resource/pic/note.png</file>
     </qresource>
-    <qresource prefix="/ico"/>
 </RCC>

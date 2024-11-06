@@ -90,12 +90,6 @@
     <property name="title">
      <string>查看(&amp;V)</string>
     </property>
-    <widget class="QMenu" name="menu_Z">
-     <property name="title">
-      <string>缩放(&amp;Z)</string>
-     </property>
-    </widget>
-    <addaction name="menu_Z"/>
     <addaction name="actionShowStatusBar"/>
     <addaction name="actionShowToolBar"/>
    </widget>

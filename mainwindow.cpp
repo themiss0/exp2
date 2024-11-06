@@ -14,6 +14,7 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("新建文本文件--编辑器");
 
     statusLabel.setText("Length: " + QString::number(0) + "   Lines: " + QString::number(0));
     statusLabel.setMaximumWidth(150);
@@ -276,16 +277,6 @@ void MainWindow::on_actionLineWrap_triggered()
     }
 }
 
-void MainWindow::on_actionFont_2_triggered()
-{
-    bool ok = false;
-    QFont font = QFontDialog::getFont(&ok, this);
-    if (ok)
-    {
-        ui->TextEdit->setFont(font);
-    }
-}
-
 void MainWindow::on_actionShowStatusBar_triggered()
 {
     bool check = ui->statusbar->isVisible();
@@ -331,10 +322,9 @@ void MainWindow::closeEvent(QCloseEvent *e)
         case QMessageBox::No:
             exit(0);
         default:
-            return;
+            e->ignore();
         }
     }
-    exit(0);
 }
 
 void MainWindow::on_TextEdit_cursorPositionChanged()
@@ -359,3 +349,14 @@ void MainWindow::on_actionSelectAll_triggered()
     ui->TextEdit->textCursor().setPosition(0);
     ui->TextEdit->textCursor().setPosition(-1, QTextCursor::KeepAnchor);
 }
+
+void MainWindow::on_actionFont_triggered()
+{
+    bool ok = false;
+    QFont font = QFontDialog::getFont(&ok, this);
+    if (ok)
+    {
+        ui->TextEdit->setFont(font);
+    }
+}
+
