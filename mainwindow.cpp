@@ -60,7 +60,7 @@ void MainWindow::on_actionFind_triggered()
 
 void MainWindow::on_actionReplace_triggered()
 {
-    replaceDialog replacedialog;
+    replaceDialog replacedialog(this, ui->TextEdit);
     replacedialog.exec();
 }
 
