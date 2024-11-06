@@ -192,6 +192,8 @@ void MainWindow::on_TextEdit_textChanged()
         ischanged = true;
         this->setWindowTitle("*" + this->windowTitle());
     }
+
+    statusLabel.setText("Length: " + QString::number(ui->TextEdit->toPlainText().length()) + "   Lines: " + QString::number(ui->TextEdit->document()->lineCount()));
 }
 
 void MainWindow::on_actionCut_triggered()
@@ -325,4 +327,9 @@ void MainWindow::closeEvent(QCloseEvent *e)
         }
     }
     exit(0);
+}
+
+void MainWindow::on_TextEdit_cursorPositionChanged()
+{
+    statusCursorLabel.setText("Ln: " + QString::number(ui->TextEdit->textCursor().blockNumber()) + "   Col: " + QString::number(ui->TextEdit->textCursor().columnNumber()));
 }

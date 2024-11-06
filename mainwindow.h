@@ -62,6 +62,8 @@ private slots:
 
     void closeEvent(QCloseEvent *e);
 
+    void on_TextEdit_cursorPositionChanged();
+
 private:
     Ui::MainWindow *ui;
     QLabel statusLabel;
