@@ -34,6 +34,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->actionCut->setEnabled(false);
     ui->TextEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
 
+    ui->actionShowStatusBar->setChecked(true);
+    ui->actionShowToolBar->setChecked(true);
+
     ischanged = false;
 }
 
@@ -51,7 +54,7 @@ void MainWindow::on_actionAbout_triggered()
 
 void MainWindow::on_actionFind_triggered()
 {
-    SearchDialog searchDialog;
+    SearchDialog searchDialog(this, ui->TextEdit);
     searchDialog.exec();
 }
 
@@ -245,44 +248,81 @@ void MainWindow::on_actionBgColor_triggered()
     ui->TextEdit->setStyleSheet("background-color:" + color.name());
 }
 
-
 void MainWindow::on_actionLineWrap_triggered()
 {
     QPlainTextEdit::LineWrapMode mode = ui->TextEdit->lineWrapMode();
 
-    if(mode == QPlainTextEdit::NoWrap){
+    if (mode == QPlainTextEdit::NoWrap)
+    {
         ui->TextEdit->setLineWrapMode(QPlainTextEdit::WidgetWidth);
 
         ui->actionLineWrap->setChecked(true);
-    }else{
+    }
+    else
+    {
         ui->TextEdit->setLineWrapMode(QPlainTextEdit::NoWrap);
 
         ui->actionLineWrap->setChecked(false);
     }
-
 }
-
 
 void MainWindow::on_actionFont_2_triggered()
 {
     bool ok = false;
     QFont font = QFontDialog::getFont(&ok, this);
-    if(ok){
+    if (ok)
+    {
         ui->TextEdit->setFont(font);
     }
 }
 
-
-void MainWindow::on_actionShowStatusBar_checkableChanged(bool checkable)
+void MainWindow::on_actionShowStatusBar_triggered()
 {
-    std::cout <<checkable << std::endl;
-    if(checkable){
+    bool check = ui->statusbar->isVisible();
+    std::cout << check << std::endl;
 
-        ui->statusbar->show();
-    }
-    else{
-        ui->statusbar->hide();
-    }
-
+    ui->actionShowStatusBar->setChecked(!check);
+    ui->statusbar->setVisible(!check);
 }
 
+void MainWindow::on_actionShowToolBar_triggered()
+{
+    bool check = ui->toolBar->isVisible();
+    std::cout << check << std::endl;
+
+    ui->actionShowToolBar->setChecked(!check);
+    ui->toolBar->setVisible(!check);
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+
+    close();
+}
+
+void MainWindow::closeEvent(QCloseEvent *e)
+{
+    if (ischanged)
+    {
+        QString path = filepath != "" ? filepath : "无标题";
+        QMessageBox box(this);
+        box.setWindowTitle("文本编辑器");
+        box.setIcon(QMessageBox::Question);
+        box.setWindowFlag(Qt::Drawer);
+        box.setText(QString("你想将更改保存到\n" + path + "吗？"));
+        box.setStandardButtons(QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+
+        int re = box.exec();
+        switch (re)
+        {
+        case QMessageBox::Yes:
+            on_actionSaveAs_triggered();
+            break;
+        case QMessageBox::No:
+            exit(0);
+        default:
+            return;
+        }
+    }
+    exit(0);
+}

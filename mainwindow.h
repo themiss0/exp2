@@ -50,12 +50,17 @@ private slots:
 
     void on_actionBgColor_triggered();
 
-
     void on_actionLineWrap_triggered();
 
     void on_actionFont_2_triggered();
 
-    void on_actionShowStatusBar_checkableChanged(bool checkable);
+    void on_actionShowStatusBar_triggered();
+
+    void on_actionShowToolBar_triggered();
+
+    void on_actionExit_triggered();
+
+    void closeEvent(QCloseEvent *e);
 
 private:
     Ui::MainWindow *ui;
